@@ -4,3 +4,5 @@ torch
 transformers
 tokenizers
 protobuf
+safetensors
+huggingface-hub
