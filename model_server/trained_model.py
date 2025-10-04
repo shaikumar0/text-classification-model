@@ -13,7 +13,7 @@ import torch.nn.functional as F
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
 
 # Load model
-MODEL_REPO = "shaikumar0/text-classifier-model"  # Hugging Face model name
+MODEL_REPO = "shaikumar0/text-classification-model"  # Hugging Face model name
 tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_REPO, use_auth_token=True)
 model = DistilBertForSequenceClassification.from_pretrained(MODEL_REPO, use_auth_token=True)
 
@@ -124,4 +124,5 @@ if __name__ == "__main__":
         label, conf, probs = classify_message(s, threshold=0.70, return_probs=True)
         print(f"Predicted: {label}  |  confidence: {conf:.3f}")
         print(f"Probs: {probs}")
+
 
