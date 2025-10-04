@@ -2,3 +2,5 @@ flask
 gunicorn
 torch
 transformers
+tokenizers
+protobuf
