@@ -23,9 +23,13 @@ HF_TOKEN = os.environ.get("HF_TOKEN")
 # HF_TOKEN = "hf_your_actual_token_here"
 
 # Load tokenizer & model from HF hub
-tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_REPO, use_auth_token=HF_TOKEN)
-model = DistilBertForSequenceClassification.from_pretrained(MODEL_REPO, use_auth_token=HF_TOKEN)
-
+tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_REPO, token=HF_TOKEN)
+model = DistilBertForSequenceClassification.from_pretrained(
+    MODEL_REPO,
+    token=HF_TOKEN,
+    low_cpu_mem_usage=True,        # reduce peak CPU memory while loading
+    torch_dtype=torch.float32     # explicit dtype (float32 for CPU)
+)
 # device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
@@ -121,3 +125,4 @@ if __name__ == "__main__":
         label, conf, probs = classify_message(s, threshold=0.70, return_probs=True)
         print(f"Predicted: {label}  |  confidence: {conf:.3f}")
         print(f"Probs: {probs}")
+
