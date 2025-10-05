@@ -6,5 +6,5 @@ tokenizers
 protobuf
 safetensors
 huggingface-hub
-sklearn
+scikit-learn
 datasets
