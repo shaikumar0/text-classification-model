@@ -6,3 +6,5 @@ tokenizers
 protobuf
 safetensors
 huggingface-hub
+sklearn
+datasets
